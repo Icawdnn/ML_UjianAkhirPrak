@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-color: #dcdcdc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .title-box {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .sec-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        #result {
+            padding-top: 50px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+
+        .col-lg-8 {
+            flex: 1;
+            margin-right: 20px;
+            text-align: left;
+        }
+
+        .inner-content {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .contact-form-area {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            margin: center;
+        }        
+
+        .sidebar-column {
+            flex: 1;
+            margin-top: 20px;
+        }
+
+        .sidebar-content {
+            text-align: center;
+        }
+
+        .img-fluid {
+            height: 300px;
+            width: 300px;
+            margin: auto;
+        }
+
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #myBar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Styles for accuracy in the contact form area */
+        .wrap-input100 {
+            margin-bottom: 20px;
+        }
+
+        .accuracy-label {
+            font-size: medium;
+            font-weight: bold;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+<section class="contact-section" id="result">
+    <div class="container">
+        <div class="title-box centred">
+            <div class="sec-title">Prediction Result</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 content-column">
+                <div class="inner-content">
+                    <div class="contact-form-area">
+                        <p style="text-transform: capitalize; font-size: 25px; font-weight: bold;">{{ model }} Model</p>
+                        <img src="{{ url_for('static', filename=img) }}" alt="" class="img-fluid">
+                        <p class="accuracy-label"> Predicted Label is: {{ labels[pred] }}</p>
+                        Accuracy : {{ (probs|max) }}% | Prediction Time : {{ (run_time) }} second
+                        <input type="hidden" id="probability" value={{(probs|max)}}>
+                        <div id="myProgress">
+                            <div id="myBar">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-column">
+                <div class="sidebar-content">
+                    <!-- Your sidebar content here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Update the text inside #myBar with the accuracy percentage
+    document.addEventListener("DOMContentLoaded", function () {
+        var accuracyValue = document.getElementById("probability").value;
+        var myBar = document.getElementById("myBar");
+        myBar.textContent = accuracyValue + "%";
+        myBar.style.width = accuracyValue + "%";
+    });
+</script>
+
+</body>
+</html>

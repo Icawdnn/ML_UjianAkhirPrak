@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Predict</title>
+    <style>
+        body {
+            background-color: #dcdcdc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .sec-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            width: 50%;
+            margin: auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        #image-preview {
+            width: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .wrap-input100 {
+            margin-bottom: 20px;
+        }
+
+        .input100 {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container-login100-form-btn {
+            margin-top: 20px;
+        }
+
+        .login100-form-btn {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .image-container img {
+            width: 100px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sec-title">Unggah Gambar untuk Membuat Prediksi</div>
+
+    <!-- Images container -->
+    <div class="images-container">
+        <div class="image-container">
+            <img src="gambar/rock.png">
+            <p>Rock</p>
+        </div>
+        <div class="image-container">
+            <img src="gambar/paper.png">
+            <p>Paper</p>
+        </div>
+        <div class="image-container">
+            <img src="gambar/scissors.png">
+            <p>Scissors</p>
+        </div>
+    </div>
+
+    <!-- Form section -->
+    <section class="form-section" id="predict1">
+        <form class="login100-form validasi-form" action="/predict" method="post" enctype="multipart/form-data">
+            <!-- Model selection -->
+            <div class="row">
+                <div class="column">
+                    <p>Pilih Model</p>
+                </div>
+                <div class="column">
+                    <select name="select_model" id="selected_model">
+                        <option value="hyperModel">Model Penyetelan Hyperparameter</option>
+                        <option value="LRSModel">Model Penjadwal Kecepatan Pembelajaran</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Image preview -->
+            <div>
+                <p> </p>
+            </div>
+
+            <!-- File input -->
+            <div class="wrap-input100 validasi-input" data-validate="File gambar diperlukan" id="input">
+                <input class="input100" id="image-source" name="file" onchange="previewImage();" type="file" accept="image/jpeg,image/jpg,image/png">
+            </div>
+
+            <!-- Execute button -->
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" type="submit">Jalankan</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<script>
+    function previewImage() {
+        // Implement image preview logic if needed
+    }
+</script>
+
+</body>
+</html>
