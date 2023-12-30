@@ -1,6 +1,6 @@
 # ML_UjianAkhirPrak
 
-Berisikan Dataset RPS atau rock, paper, scissors atau disebut batu, kertas, gunting
+Berisikan Dataset RPS yang terdiri dari 3 kelas yaitu rock, paper,dan scissors  dengan jumlah sebanyak 2520 data. Masing-masing kelas memiliki jumlah sebanyak 840 gambar. 
 pada code diatas merupakan inputan gambar untuk mengetahui berapa akurasi data dari gambar yang sudah di upload dengan waktu yang dihasilkan. 
 
 Untuk hasil tampilan yang saya buat seperti ini 
